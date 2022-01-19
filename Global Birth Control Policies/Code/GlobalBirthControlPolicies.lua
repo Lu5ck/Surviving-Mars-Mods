@@ -1,18 +1,27 @@
 -- Copy the original function
 local oldCalcBirth = Community.CalcBirth
 
+function GBCP_CountChildren()
+    local allColonist = UIColony:GetCityLabels("Colonist")
+    local children = 0
+
+    for _, allColonist in ipairs(allColonist) do
+        if allColonist.age_trait == "Child" then
+            children = children + 1
+        end
+    end
+
+    return children
+end
+
 -- Override the original function
 function Community:CalcBirth(...)
 
     -- Only proceed if mod is enabled else skip all these to original function
     if CurrentModOptions.GBCP_Toggle == true then
-        print(CurrentModOptions.GBCP_MaxChildren)
-        -- Get overview data, in this case we need the children population
-        local resource_overview = GetCityResourceOverview(UICity)
-        local data = resource_overview.data
 
         -- If exceed set limit, end function
-        if data.children >= CurrentModOptions.GBCP_MaxChildren then
+        if GBCP_CountChildren() >= CurrentModOptions.GBCP_MaxChildren then
             return
         end
     end
