@@ -1,8 +1,8 @@
 return {
 PlaceObj('ModItemCode', {
-	'name', "GlobalBirthControlPolicies",
+	'name', "GlobalBirthControlPolicy",
 	'comment', "The one file to change them all",
-	'FileName', "Code/GlobalBirthControlPolicies.lua",
+	'FileName', "Code/GlobalBirthControlPolicy.lua",
 }),
 PlaceObj('ModItemOptionNumber', {
 	'name', "GBCP_MaxChildren",
